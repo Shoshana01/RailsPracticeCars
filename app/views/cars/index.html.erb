@@ -1,4 +1,5 @@
-<h1>Cars</h1>
+<h1>Cars (<%= @cars.length %>) </h1>
+<%= link_to "New Car", "/cars/new" %>
 
 <% @cars.each do |car| %>
     <p><%= car.owner %>, <%= car.model%>, <%= car.color%></p>
