@@ -8,9 +8,23 @@ class CarsController < ApplicationController
     end
 
     def new
+        @car = Car.new
     end
 
     def create
-        render plain: "Saving a car. Owner: #{params[:owner]}, Model: #{params[:model]}, Color: #{params[:color]}"
+       @car = Car.new(car_params)
+       if @car.save
+        redirect_to cars_url
+        #if save for pic worked go to index.html.erb
+       else
+        render :new
+        #otherwise render new.html.erb
     end
+end
+
+private
+def car_params
+    params.require(:car).permit(:owner, :model, :color)
+end
+
 end
