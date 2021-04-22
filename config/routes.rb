@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'cars' => 'cars#create'
   get 'cars/new' => 'cars#new'
 
+ 
   get 'cars/:id' => 'cars#show', as: 'car'
+
+  get 'cars/:id/edit' => "cars#edit", as: "edit_car"
+  patch 'cars/:id' => "cars#update"
 
 end

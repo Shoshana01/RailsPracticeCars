@@ -20,6 +20,20 @@ class CarsController < ApplicationController
         render :new
         #otherwise render new.html.erb
     end
+
+    def edit
+        @car = Car.find(params[:id])
+    end
+
+    def update
+        @car = Car.find(params[:id])
+
+        if @car.update_attributes(car_params)
+            redirect_to "/cars/#{@car.id}"
+        else
+            render :edit
+        end
+    end
 end
 
 private
